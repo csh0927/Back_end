@@ -11,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor //초기화 되지않은 fInal필드나, @NonNull이 붙은 필드에 대해 생성자를 생성해 준다. 주로 의존성 주입편의성을 위해서 사용되곤 한다.
-@Service //Controller가 Request를 받으면 적절한 Service에 전달하고, 전달 받은 Service는 business logic을 처리한다. Service가 DB에 DAO로 접근하고, 데이터를 DTO로 전달받은 다음, 데이터를 필요에 맞게 가공하여 반환한다.
+@RequiredArgsConstructor //초기화 되지않은 fInal필드나, @NonNull이 붙은 필드에 대해 생성자를 생성해 준다. 
+주로 의존성 주입편의성을 위해서 사용되곤 한다.
+@Service //Controller가 Request를 받으면 적절한 Service에 전달하고, 전달 받은 Service는 business logic을 처리한다. 
+Service가 DB에 DAO로 접근하고, 데이터를 DTO로 전달받은 다음, 데이터를 필요에 맞게 가공하여 반환한다.
 public class UserService {
 
     private final UserRepository userRepository;
