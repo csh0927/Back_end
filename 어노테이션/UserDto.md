@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter //객체 외부에서 객체 필드값을 사용하기 부적절한 경우가 있다. 
+@Getter //필드가 감춰져야 할 데이터일때, 
 이런 경우 메소드로 필드값을 가공후 외부로 전달하는데, 이런 역할을 하는 메소드가 Getter이다.
 @NoArgsConstructor //파라미터가 없는 기본 생성자를 생성해준다.
 public class UserDto {
