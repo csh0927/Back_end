@@ -16,7 +16,7 @@ public class RestController {
 
 ### @ResponseStatus
 
-@ResponseStatus는 에러 HTTP 상태를 변경하도록 도와주는 어노테이션이다.
+@ResponseStatus는 HTTP 상태를 변경하도록 도와주는 어노테이션이다.
 
 ```
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
