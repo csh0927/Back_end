@@ -4,9 +4,7 @@
 
 Try-catch문 보다 발생하는 예외를 체계적으로 관리할 수 있는 예외처리 방법, @Controller 와 @RestController 어노테이션이 있는 모든 곳에서의 예외를 잡을 수 있도록 해줍니다.
 
-- RestController는 Controller + ResponseBody 이고 ResponseBody는 JSON으로 본문을 반환해줍니다.
 - Try-catch는
-
 ```
  try {
 //예외가 발생할 가능성이 있는 문장
@@ -17,6 +15,9 @@ Try-catch문 보다 발생하는 예외를 체계적으로 관리할 수 있는 
 ```
 
 요런식으로 예외를 처리하는 것.
+
+- RestController는 Controller + ResponseBody 이고 ResponseBody는 JSON으로 본문을 반환해줍니다.
+
 
 ## @ExceptionHandler
 
