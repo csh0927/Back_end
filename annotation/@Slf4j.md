@@ -25,3 +25,27 @@ Slf4j의 이점
 * WARN: 처리 가능한 문제, 시스템 에러의 원인이 될 수 있는 경고성 메시지를 표시한다.
 * ERROR: 요청을 처리하는 중 오류가 발생한 경우를 표시한다.
 
+
+**로그 사용법**
+
+```
+@Controller
+@Slf4j
+public class TestController {
+    @GetMapping("/")
+    public String String(String str){
+        try {
+            str.toString();
+        } catch (NullPointerException e){
+            log.trace("가장 디테일한 로그");
+            log.warn("경고");
+            log.info("정보성 로그");
+            log.debug("디버깅용 로그");
+            log.error("에러",e);
+        }
+        return "test";
+    }
+}
+```
+
+로깅이 필요한 부분에는 log 변수로 로그를 생성하면 된다.
