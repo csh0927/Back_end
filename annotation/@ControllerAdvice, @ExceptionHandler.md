@@ -1,27 +1,24 @@
-# 예외 처리
-
 ## @ControllerAdvice
 
-Try-catch문 보다 발생하는 예외를 체계적으로 관리할 수 있는 예외처리 방법, @Controller 와 @RestController 어노테이션이 있는 모든 곳에서의 예외를 잡을 수 있도록 해줍니다.
+* @Controller 와 @RestController 어노테이션이 있는 모든 곳에서의 예외를 잡을 수 있도록 해준다.
 
-- Try-catch는
-```
- try {
-//예외가 발생할 가능성이 있는 문장
-}catch(Exception e1) {
-//예외가 발생했을 경우, 이를 처리하기 위한 문장을 넣는다.
-}
+* @RestControllerAdvice는 @ControllerAdvice에 @ResponseBody를 합쳐놓은 어노테이션으로, @ControllerAdvice와 동일한 역할을 수행하고, 추가적으로 객체를 리턴할 수도 있다.
 
-```
+* 위 두 어노테이션 모두 적용 범위를 클래스나 패키지 단위로 제한할 수도 있으며, 아래와 같이 사용하면 된다.
 
-요런식으로 예외를 처리하는 것.
+  ```
+  @RestControllerAdvice(basePackageClasses = EditController.class)
+  ```
 
-- RestController는 Controller + ResponseBody 이고 ResponseBody는 JSON으로 본문을 반환해줍니다.
-
+  ```
+  @RestControllerAdvice(basePackages = "com.app.edit.controller")
+  ```
 
 ## @ExceptionHandler
 
-컨트롤러 내 특정 Exception을 처리하기 위한 어노테이션입니다. @Controller 클래스 내에서도 사용 가능합니다. 하지만 Exception들을 전역적으로 처리하기 위해, 대부분 @ControllerAdvice 클래스에서 활용됩니다.
+컨트롤러 내 특정 Exception을 처리하기 위한 어노테이션이다. 이 어노테이션을 메서드에 선언하고 특정 예외 클래스를 지정해주면 해당 예외가 발생했을 때 메서드에 정의한 로직으로 처리할 수 있다. 
+
+@Controller 클래스 내에서도 사용 가능하다. 하지만 Exception들을 전역적으로 처리하기 위해, 대부분 @ControllerAdvice 클래스에서 활용된다.
 
 ```
 @ControllerAdvice
@@ -29,10 +26,7 @@ public class ControllerAdvice {
 
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<String> handleCustomException() {
-        // ...
+        ...
     }
 }
-
 ```
-
-만약 ExceptionHandler가 없다면 try-catch 문으로 처리하거나 throw 해야 하기 때문에 중복되는 코드가 많아져서 @ExceptionHandler를 사용하여 공통 로직에서 처리하면 편리합니다.
