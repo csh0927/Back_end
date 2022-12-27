@@ -33,10 +33,10 @@ Stream<String> stream = list.stream();
 
 //빌더 생성
 String<String> stream = Stream<String>builder()
-							.add("a")
-							.add("b")
-							.add("c")
-							.build();
+				.add("a")
+				.add("b")
+				.add("c")
+				.build();
 							
 //필터
 Stream<T> filter(Predicate<? super T> predicate);
@@ -45,7 +45,7 @@ Stream<T> filter(Predicate<? super T> predicate);
 //예제
 Stream<Integer> stream = IntStream.range(1, 10).boxed();
 stream.filter(v -> ((v % 2) == 0))
-			.forEach(System.out::println);
+		.forEach(System.out::println);
 //2, 4, 6, 8 짝수 객체만 뽑아내는 필터 예제
 
 //Map
@@ -56,8 +56,8 @@ stream.filter(v -> ((v % 2) == 0))
 
 Stream<Integer> stream = IntStream.range(1, 10).boxed();
 stream.filter(v -> ((v % 2) == 0))
-			.map(v -> v % 10)
-			.forEach(System.out::println);
+		.map(v -> v % 10)
+		.forEach(System.out::println);
 //20, 40, 60, 80 짝수만 뽑아 낸 다음 곱하기 10을 해서 새로운 숫자를 생성하는 스트림 예제
 
 //Map과 비슷한 flatMap
@@ -67,10 +67,10 @@ stream.filter(v -> ((v % 2) == 0))
 //플랫트닝(Flattenning) : 중첩 된 스트림 구조를 한단계 적은 단일 컬렉션에 대한 스트림으로 만들어주는 작업
 
 //예제
-List<List<String>> list = Arrays.asLists(Arrays.asList("A", "B", "C"), 															Arrays.asList("a", "b", "c"));
+List<List<String>> list = Arrays.asLists(Arrays.asList("A", "B", "C"), Arrays.asList("a", "b", "c"));
 List<String> flatList = list.stream()
-							.flatMap(Collection::stream)
-							.collect(Collection::toList());
+				.flatMap(Collection::stream)
+				.collect(Collection::toList());
 // [["A", "B", "C"], ["a", "b", "c"]] -> ["A", "B", "C", "a", "b", "c"]
 //(e) -> Collection.stream(e) 이를 축약해서 Collection::stream
 
@@ -98,14 +98,14 @@ Optional<T> reduce(BinaryOperator<T> accumulator);
 T reduce(T identity, BinaryOperator<T> accumulator);
 
 Set<Integer> evenNumber = IntStream.range(1, 1000).boxed()
-								.filter(n -> (n % 2 == 0))
-								.collect(Collectors.toSet());
+					.filter(n -> (n % 2 == 0))
+					.collect(Collectors.toSet());
 								
 //Collector.joining()을 사용하면 작업한 결과를 하나의 문자열로 이어 붙이게 된다.
 
 List<String> hi = Arrays.asList("dks", "sud", "gk");
 String returnValue = hi.stream()
-			.collect(Collectors.joining());
+				.collect(Collectors.joining());
 
 System.out.println(returnValue);
 //dkssudgk
@@ -113,6 +113,6 @@ System.out.println(returnValue);
 //스트림에서 뽑아져 나오는 값에 대해서 어떤 작업을 하고 싶을 때 foreach 메소드를 사용한다. 이 메소드는 앞에서 본 메소드들과 다르게 어떤 값을 리턴하지는 않는다.
 
 Set<Integer> evenNumber = IntStream.range(1, 1000).boxed()
-									.filter(n -> (n % 2 == 0))
-									.forEach(System.out::println);
+					.filter(n -> (n % 2 == 0))
+					.forEach(System.out::println);
 ```
