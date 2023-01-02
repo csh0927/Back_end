@@ -12,3 +12,24 @@ Java8 부터는 Optional<T> 클래스를 사용해 NPE를 방지할 수 있도�
   * 만약 어떤 데이터가 절대 null이 아니라면 Optional.of()로 생성할 수 있다. 만약 Optional.of()로 Null을 저장하려고 하면 NullPointerException이 발생한다.
 * Optional.ofNullbale() - 값이 Null일 수도, 아닐 수도 있는 경우
   * 만약 어떤 데이터가 null이 올 수도 있고 아닐 수도 있는 경우에는 Optional.ofNullbale로 생성할 수 있다. 그리고 이후에 orElse 또는 orElseGet 메소드를 이용해서 값이 없는 경우라도 안전하게 값을 가져올 수 있다.
+
+#### Optional을 올바르게 사용해야 하는 이유
+
+Optional을 사용하면 코드가 Null-Safe해지고, 가독성이 좋아지며 애플리케이션이 안정적이 된다는 등과 같은 얘기들을 많이 접할 수 있다. 하지만 이는 Optional을 목적에 맞게 올바르게 사용했을 때의 이야기이고, Optional을 남발하는 코드는 오히려 다음과 같은 부작용을 유발할 수 있다.
+
+* NullPointerException 대신 NoSuchElementException이 발생함
+  * Optional로 받은 변수를 값이 있는지 확인하지 않고 접근하려고 한다면 NoSuchElementException이 발생하게 된다.
+* 오히려 코드의 가독성을 떨어뜨림
+  * 위 문제를 해결하기 위해 값이 있는지 확인하려고 하면 코드가 더 늘어나게 된다.
+* 시간적, 공간적 비용이 증가함
+  * 시간적 : Optional 안에 있는 개체를 얻기 위해서는 Optional 객체를 통해 접근해야 하므로 접근 비용이 증가한다.
+  * 공간적 : Optional은 객체를 감싸는 컨테이너이므로 Optional 객체 자페를 저장하기 위한 메모리가 추가로 필요하다.
+
+#### Optional을 올바르게 사용하는 방법
+
+* Optional 변수에 Null을 할당하지 말자
+* 값이 없을 때 Optional.orElseX()로 기본 값을 반환하자
+* 단순히 값을 얻으려는 목적으로만 Optional을 사용하지 말자
+* 생성자, 메소드 파라미터 등으로 Optional을 넘기지 말자
+* Collection의 경우 Optional이 아닌 빈 Collection을 사용하자
+* 반환 타입으로만 사용하자
