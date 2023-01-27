@@ -6,7 +6,7 @@
 
 #### Optional이란?
 
-Java8 부터는 Optional<T> 클래스를 사용해 NPE를 방지할 수 있도록 도와준다. **Optional<T>는 null이 올 수 있는 값을 감싸는 Wrapper 클래스**로, 참조하더라도 NPE가 발생하지 않도록 도와준다. Optional 클래스는 아래와 같은 value에 값을 저장하기 때문에 값이 null이더라도 바로 NPE가 발생하지 않으며, 클래스이기 때문에 각종 메소드를 제공해준다.
+Java8 부터는 Optional<T> 클래스를 사용할 수 있어, NPE를 방지할 수 있도록 도와준다. **Optional<T>는 null이 올 수 있는 값을 감싸는 Wrapper 클래스**로, 참조하더라도 NPE가 발생하지 않도록 도와준다. Optional 클래스는 아래와 같은 value에 값을 저장하기 때문에 값이 null이더라도 바로 NPE가 발생하지 않으며, 클래스이기 때문에 각종 메소드를 제공해준다.
 
 * Optional.of - 값이 Null이 아닌 경우
   * 만약 어떤 데이터가 절대 null이 아니라면 Optional.of()로 생성할 수 있다. 만약 Optional.of()로 Null을 저장하려고 하면 NullPointerException이 발생한다.
